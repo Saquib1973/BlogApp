@@ -18,7 +18,7 @@ const registerUser = async (req, res) => {
     if (existingUser) {
       return res.status(500).send({
         success: false,
-        message: "User already exists",
+        message: "User already exists , Login !!",
       });
     }
     //Hashing Password

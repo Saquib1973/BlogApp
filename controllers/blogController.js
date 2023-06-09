@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 const getAllBlogs = async (req, res) => {
   try {
-    const blog = await blogModel.find({});
+    const blog = await blogModel.find({}).populate("user");
     if (!blog) {
       return res.status(200).send({
         success: false,
@@ -135,6 +135,7 @@ const userBlog = async (req, res) => {
       });
     }
     return res.status(200).send({
+      blogsCount: blog.length,
       success: true,
       message: "Blog successfully found",
       blog,
